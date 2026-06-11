@@ -22,17 +22,13 @@ export default async function ProductDetails({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-
-  const product = products.find(
-    (p) => p.id === Number(slug)
-  );
-
-  if (!product) {
-    notFound();
+}) 
+{
+  const {slug}= await params
+  const product=products.find((p)=>p.id===Number(slug))
+  if(!product) {
+    notFound()
   }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-black-100">
       <div className="bg-white p-8 rounded-xl shadow-lg">
