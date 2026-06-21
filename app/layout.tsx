@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import ClientProvider from "@/providers/query-client-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +30,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="p-4 border-b">
+        <ClientProvider>
+          <header className="p-4 border-b">
             <nav className="flex gap-4">
               <Link href={"/"}>Home</Link>
-              <Link href={"/profile/products"}>Products</Link>
+              <Link href={"/products"}>Products</Link>
             </nav>
           </header>
           {children}
+        </ClientProvider>
       </body>
     </html>
   );
